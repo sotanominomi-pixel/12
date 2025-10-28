@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>N Clock - Digital + Stopwatch</title>
+<link rel="manifest" href="manifest.json">
+<style>
+body { font-family: -apple-system, sans-serif; text-align: center; padding: 30px; background: #fff; }
+.mode-switch { margin-bottom: 20px; }
+.mode-switch button { font-size: 18px; padding: 10px 20px; margin: 0 5px; cursor: pointer; border-radius: 12px; border: none; }
+.mode-switch button.active { background: #007AFF; color: #fff; }
+
+#clockDisplay, #stopwatchDisplay { font-size: 70px; font-weight: bold; margin: 30px 0; font-variant-numeric: tabular-nums; }
+
+.stopwatch-controls button { font-size: 22px; padding: 10px 20px; margin: 0 10px; border-radius: 12px; border: none; cursor: pointer; color: #fff; }
+#startStopBtn { background: green; }
+#resetBtn { background: gray; }
+#lapBtn { background: blue; }
+
+.slider-container { margin-top: 30px; }
+input[type=range] { width: 300px; height: 8px; border-radius: 5px; accent-color: black; }
+
+#laps { margin-top: 20px; max-height: 150px; overflow-y: auto; text-align: left; width: 300px; margin-left:auto; margin-right:auto; border: 1px solid #ccc; border-radius: 8px; padding: 5px; }
+</style>
+</head>
+<body>
+
+<div class="mode-switch">
+  <button id="clockBtn" class="active">時計</button>
+  <button id="stopwatchBtn">ストップウォッチ</button>
+</div>
+
+<div id="clockDisplay">00:00:00</div>
+<div id="stopwatchDisplay" style="display:none;">00:00:00</div>
+
+<div class="stopwatch-controls" style="display:none;">
+  <button id="startStopBtn">START</button>
+  <button id="lapBtn">LAP</button>
+  <button id="resetBtn">RESET</button>
+</div>
+
+<div class="slider-container">
+  <label>1日の長さ: <span id="speedDisplay">24</span> 時間</label><br>
+  <input type="range" id="speedSlider" min="12" max="48" value="24">
+</div>
+
+<div id="laps"></div>
+
+<script src="sw.js"></script>
+
+</body>
+</html>
